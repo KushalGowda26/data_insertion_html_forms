@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topic Input</title>
+  </head>
+  <body>
+    <center>
+      <form method="POST">
+        {% csrf_token %}
+        <label for="topic">Topic Name</label>
+        <select name="topic" id="topic">
+          {% for t in topic %}
+          <option value="{{t}}">{{t.topic_name}}</option>
+          {% endfor %}</select
+        ><br />
+        <br />
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" /><br />
+        <br />
+        <label for="url">URL</label>
+        <input type="text" name="url" id="url" /><br />
+        <br />
+        <label for="rec">Records</label>
+        <select name="rec" id="rec">
+          {% for a in Web %}
+          <option value="{{a}}">{{a.name}}</option>
+          {% endfor %}</select
+        ><br />
+        <br />
+        <label for="date">Date</label>
+        <input type="date" name="date" id="date" /><br />
+        <br />
+        <input type="submit" value="submit" />
+      </form>
+    </center>
+  </body>
+</html>
