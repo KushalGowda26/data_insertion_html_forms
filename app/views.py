@@ -28,8 +28,9 @@ def insert_webpage(request):
 
 
 def insert_records(request):
+  topics=Topic.objects.all()
   web=Webpage.objects.all()
-  d={'Web':web}
+  d={'Web':web, 'topic':topics}
   if request.method=="POST":
     topic=request.POST['topic']
     name=request.POST['name']
@@ -39,8 +40,20 @@ def insert_records(request):
     T.save()
     W=Webpage.objects.get_or_create(topic_name=T, name=name, url=url)[0]
     W.save()
-    A=AccessRecords.objects.get_or_create(name=W, date=date)
+    A=AccessRecords.objects.get_or_create(name=W, date=date)[0]
     A.save()
     return HttpResponse('Record insertion done')
   return render(request, 'insert_records.html',d)
+
+
+def topic_details(request):
+  
+  topics=Topic.objects.all()
+  d={'topic':topics}
+  if request.method=="POST":
+    topic=request.POST['topic']
+    T=Topic.objects.get_or_create(topic_name=topic)[0]
+    T.save()
+  return render(request, 'topic_details.html',d)
+
     

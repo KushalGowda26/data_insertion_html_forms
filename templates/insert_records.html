@@ -17,14 +17,12 @@
           {% endfor %}</select
         ><br />
         <br />
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" /><br />
-        <br />
+
         <label for="url">URL</label>
-        <input type="text" name="url" id="url" /><br />
+        <input type="url" name="url" id="url" /><br />
         <br />
-        <label for="rec">Records</label>
-        <select name="rec" id="rec">
+        <label for="name">Name</label>
+        <select name="name" id="name">
           {% for a in Web %}
           <option value="{{a}}">{{a.name}}</option>
           {% endfor %}</select
